@@ -1,0 +1,34 @@
+[
+    {
+        "type": "Risultato accessorio d’esercizio",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi attività accessoria",
+        "code": 7000,
+        "sign": 1
+    },
+    {
+        "type": "Risultato accessorio d’esercizio",
+        "subType": null,
+        "group": null,
+        "description": "Costi attività accessoria",
+        "code": 7010,
+        "sign": -1
+    },
+    {
+        "type": "Risultato accessorio d’esercizio",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi immobili aziendali",
+        "code": 7500,
+        "sign": 1
+    },
+    {
+        "type": "Risultato accessorio d’esercizio",
+        "subType": null,
+        "group": null,
+        "description": "Costi immobili aziendali",
+        "code": 7510,
+        "sign": -1
+    }
+]

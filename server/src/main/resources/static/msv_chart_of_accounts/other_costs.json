@@ -1,0 +1,114 @@
+[
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi dei locali",
+        "code": 6000,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Manutenzioni, riparazioni e sostituzione immobilizzazioni mobiliari",
+        "code": 6100,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi leasing immobilizzazioni mobiliari",
+        "code": 6105,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi auto e di trasporto",
+        "code": 6200,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Leasing e noleggio auto",
+        "code": 6260,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Assicurazioni cose, contributi, tasse e autorizzazioni",
+        "code": 6300,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi energia e smaltimento",
+        "code": 6400,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi amministrativi",
+        "code": 6500,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi informatici incluso leasing",
+        "code": 6570,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi pubblicitari",
+        "code": 6600,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Altri costi d’esercizio",
+        "code": 6700,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Ammortamenti e rettifiche di valore dell’attivo fisso",
+        "code": 6800,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Costi finanziari",
+        "code": 6900,
+        "sign": -1
+    },
+    {
+        "type": "Altri costi d’esercizio, ammortamenti, rettifiche di valore e risultati finanziari",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi finanziari",
+        "code": 6950,
+        "sign": 1
+    }
+]

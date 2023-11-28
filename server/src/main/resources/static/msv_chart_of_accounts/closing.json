@@ -1,0 +1,18 @@
+[
+    {
+        "type": "Chiusura",
+        "subType": null,
+        "group": null,
+        "description": "Utile annuale",
+        "code": 9200,
+        "sign": 1
+    },
+    {
+        "type": "Chiusura",
+        "subType": null,
+        "group": null,
+        "description": "Perdita annuale",
+        "code": 9200,
+        "sign": -1
+    }
+]

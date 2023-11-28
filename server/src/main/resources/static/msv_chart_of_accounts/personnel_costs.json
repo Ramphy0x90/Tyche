@@ -1,0 +1,34 @@
+[
+    {
+        "type": "Costi per il personale",
+        "subType": null,
+        "group": null,
+        "description": "Salari",
+        "code": 5000,
+        "sign": -1
+    },
+    {
+        "type": "Costi per il personale",
+        "subType": null,
+        "group": null,
+        "description": "Oneri sociali",
+        "code": 5700,
+        "sign": -1
+    },
+    {
+        "type": "Costi per il personale",
+        "subType": null,
+        "group": null,
+        "description": "Altri costi del personale",
+        "code": 5800,
+        "sign": -1
+    },
+    {
+        "type": "Costi per il personale",
+        "subType": null,
+        "group": null,
+        "description": "Prestazioni di terzi",
+        "code": 5900,
+        "sign": -1
+    }
+]

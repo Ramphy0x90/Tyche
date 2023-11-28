@@ -1,0 +1,90 @@
+[
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi prodotti fabbricati",
+        "code": 3000,
+        "sign": 1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi merci di rivendita",
+        "code": 3200,
+        "sign": 1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi prestazioni di servizi",
+        "code": 3400,
+        "sign": 1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Altri ricavi e prestazioni di servizi",
+        "code": 3600,
+        "sign": 1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Lavori interni",
+        "code": 3700,
+        "sign": 1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Consumo proprio",
+        "code": 3710,
+        "sign": 1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Diminuzione di ricavi",
+        "code": 3800,
+        "sign": 1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Perdite su debitori, variazione delcredere",
+        "code": 3805,
+        "sign": -1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Variazione delle scorte di prodotti in corso di fabbricazione",
+        "code": 3900,
+        "sign": -1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Variazione delle scorte di prodotti finiti",
+        "code": 3901,
+        "sign": -1
+    },
+    {
+        "type": "Ricavi da forniture e prestazioni",
+        "subType": null,
+        "group": null,
+        "description": "Variazione prestazioni di servizi non fatturate",
+        "code": 3940,
+        "sign": -1
+    }
+]

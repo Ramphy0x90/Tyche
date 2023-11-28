@@ -1,0 +1,250 @@
+[
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Debiti per forniture e prestazioni",
+        "description": "Debiti per forniture e prestazioni (creditori)",
+        "code": 2000,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Debiti per forniture e prestazioni",
+        "description": "Acconti ricevuti",
+        "code": 2030,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Debiti onerosi a breve termine",
+        "description": "Banca passiva",
+        "code": 2100,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Debiti onerosi a breve termine",
+        "description": "Impegni leasing finanziari",
+        "code": 2120,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Debiti onerosi a breve termine",
+        "description": "Altri debiti onerosi",
+        "code": 2140,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "IVA dovuta",
+        "code": 2200,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "IVA, rendiconto",
+        "code": 2201,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "Imposta preventiva",
+        "code": 2206,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "Imposte dirette",
+        "code": 2208,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "Altri debiti a breve termine",
+        "code": 2210,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "Dividendi",
+        "code": 2261,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "Assicurazioni sociali e istituti di previdenza",
+        "code": 2270,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Altri debiti a breve termine",
+        "description": "Imposte alla fonte",
+        "code": 2279,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Ratei e risconti passivi",
+        "description": "Costi da pagare",
+        "code": 2300,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Ratei e risconti passivi",
+        "description": "Ricavi incassati dell’anno seguente",
+        "code": 2301,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a breve termine",
+        "group": "Ratei e risconti passivi",
+        "description": "Accantonamenti a breve termine",
+        "code": 2330,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a lungo termine",
+        "group": "Debiti onerosi a lungo termine",
+        "description": "Debiti bancari",
+        "code": 2400,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a lungo termine",
+        "group": "Debiti onerosi a lungo termine",
+        "description": "Impegni leasing finanziari",
+        "code": 2420,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a lungo termine",
+        "group": "Debiti onerosi a lungo termine",
+        "description": "Prestiti obbligazionari",
+        "code": 2430,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a lungo termine",
+        "group": "Debiti onerosi a lungo termine",
+        "description": "Prestiti",
+        "code": 2450,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a lungo termine",
+        "group": "Debiti onerosi a lungo termine",
+        "description": "Mutui ipotecari",
+        "code": 2451,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a lungo termine",
+        "group": "Altri debiti a lungo termine",
+        "description": "Altri debiti a lungo termine (non onerosi)",
+        "code": 2500,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale di terzi a lungo termine",
+        "group": "Accantonamenti e poste analoghe previste dalla legge",
+        "description": "Accantonamenti",
+        "code": 2600,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Capitale socio A all’inizio dell’esercizio",
+        "code": 2800,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Apporti di capitale / prelevamenti di capitale socio A",
+        "code": 2810,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Privato socio A",
+        "code": 2820,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Utile / perdita annuale socio A",
+        "code": 2831,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Capitale accomandato A all’inizio dell’esercizio",
+        "code": 2850,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Apporti di capitale / prelevamenti di capitale accomandato A",
+        "code": 2860,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Privato accomandante A",
+        "code": 2870,
+        "sign": -1
+    },
+    {
+        "type": "Passivo",
+        "subType": "Capitale proprio (società di persone)",
+        "group": null,
+        "description": "Utile/perdita annuale accomandante A",
+        "code": 2881,
+        "sign": -1
+    }
+]

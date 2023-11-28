@@ -1,0 +1,402 @@
+[
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Liquidità",
+        "description": "Cassa",
+        "code": 1000,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Liquidità",
+        "description": "Banca",
+        "code": 1020,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Attivi quotati in borsa detenuti a breve termine",
+        "description": "Titoli",
+        "code": 1060,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Attivi quotati in borsa detenuti a breve termine",
+        "description": "Titoli",
+        "code": 1060,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Crediti da forniture e prestazioni",
+        "description": "Crediti da forniture e prestazioni (debitori)",
+        "code": 1100,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Crediti da forniture e prestazioni",
+        "description": "Delcredere",
+        "code": 1109,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Altri crediti a breve termine",
+        "description": "Anticipi e prestiti",
+        "code": 1140,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Altri crediti a breve termine",
+        "description": "Rettifica valore anticipi e prestiti",
+        "code": 1149,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Altri crediti a breve termine",
+        "description": "IVA, Imposta precedente su materiale, merce, servizi e energia",
+        "code": 1170,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Altri crediti a breve termine",
+        "description": "IVA, imposta precedente su investimenti e altri costi d’esercizio",
+        "code": 1171,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Altri crediti a breve termine",
+        "description": "Imposta preventiva",
+        "code": 1176,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Altri crediti a breve termine",
+        "description": "Crediti da assicurazioni sociali e istituti di previdenza",
+        "code": 1180,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Altri crediti a breve termine",
+        "description": "Imposte alla fonte",
+        "code": 1189,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Crediti diversi a breve termine",
+        "description": "Imposte alla fonte",
+        "code": 1190,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Crediti diversi a breve termine",
+        "description": "Rettifica valore crediti diversi a breve termine",
+        "code": 1199,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Merce di rivendita",
+        "code": 1200,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Materia prima",
+        "code": 1210,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Materia ausiliaria",
+        "code": 1220,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Materiale di consumo",
+        "code": 1230,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Merce in consegna",
+        "code": 1250,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Prodotti finiti",
+        "code": 1260,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Prodotti in corso di fabbricazione",
+        "code": 1270,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Scorte e prestazioni di servizi non fatturate",
+        "description": "Prestazioni di servizi non fatturate",
+        "code": 1280,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Ratei e risconti attivi",
+        "sign": 1,
+        "description": "Costi anticipati",
+        "code": 1300
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo circolante",
+        "group": "Ratei e risconti attivi",
+        "sign": 1,
+        "description": "Ricavi da incassare",
+        "code": 1301
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Titoli",
+        "code": 1400,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Rettifica valore titoli",
+        "code": 1409,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Prestiti",
+        "code": 1440,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Prestiti ipotecari",
+        "code": 1441,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Rettifica valore crediti a lungo termine",
+        "code": 1449,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Partecipazioni",
+        "code": 148,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Partecipazioni",
+        "code": 1480,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni finanziarie",
+        "description": "Rettifica valore partecipazioni",
+        "code": 1489,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Macchine e attrezzature",
+        "code": 1500,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Rettifica valore macchine e attrezzature",
+        "code": 1509,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Mobilio e installazioni",
+        "code": 1510,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Rettifica valore mobilio e installazioni",
+        "code": 1519,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Macchine ufficio, informatica e tecnologia della comunicazione",
+        "code": 1520,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Rettifica valore macchine ufficio, inf. e tec. della comunicazione",
+        "code": 1529,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Veicoli",
+        "code": 1530,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Rettifica valore veicoli",
+        "code": 1539,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Utensili e apparecchiature",
+        "code": 1540,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali mobiliari",
+        "description": "Rettifica valore utensili e apparecchiature",
+        "code": 1549,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali immobiliari",
+        "description": "Immobili aziendali",
+        "code": 1600,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni materiali immobiliari",
+        "description": "Rettifica valore immobili aziendali",
+        "code": 1609,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni immateriali",
+        "description": "Patenti, know-how, licenze, diritti e sviluppo",
+        "code": 1700,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni immateriali",
+        "description": "Rettifica valore patenti, know-how, licenze, diritti e sviluppo",
+        "code": 1709,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni immateriali",
+        "description": "Goodwill",
+        "code": 1770,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Immobilizzazioni immateriali",
+        "description": "Rettifica valore goodwill",
+        "code": 1779,
+        "sign": 1
+    },
+    {
+        "type": "Attivo",
+        "subType": "Attivo fisso",
+        "group": "Capitale sociale o capitale della fondazione non versati",
+        "description": "Capitale azionario, capitale sociale, diritti di partecipazione o capitale della fondazione non versati",
+        "code": 1850,
+        "sign": 1
+    }
+]

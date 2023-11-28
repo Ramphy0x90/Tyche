@@ -1,0 +1,42 @@
+[
+    {
+        "type": "Costi per il materiale, la merce i servizi e l’energia",
+        "subType": null,
+        "group": null,
+        "description": "Costi materiale per la fabbricazione",
+        "code": 4000,
+        "sign": -1
+    },
+    {
+        "type": "Costi per il materiale, la merce i servizi e l’energia",
+        "subType": null,
+        "group": null,
+        "description": "Costi delle merci di rivendita",
+        "code": 4200,
+        "sign": -1
+    },
+    {
+        "type": "Costi per il materiale, la merce i servizi e l’energia",
+        "subType": null,
+        "group": null,
+        "description": "Lavori di terzi / prestazioni di subappaltanti",
+        "code": 4400,
+        "sign": -1
+    },
+    {
+        "type": "Costi per il materiale, la merce i servizi e l’energia",
+        "subType": null,
+        "group": null,
+        "description": "Consumi energia per la produzione",
+        "code": 4500,
+        "sign": -1
+    },
+    {
+        "type": "Costi per il materiale, la merce i servizi e l’energia",
+        "subType": null,
+        "group": null,
+        "description": "Diminuzione di cost",
+        "code": 4900,
+        "sign": -1
+    }
+]

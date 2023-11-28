@@ -1,0 +1,42 @@
+[
+    {
+        "type": "Risultato estraneo, straordinario, unico o relativo ad altri periodi contabil",
+        "subType": null,
+        "group": null,
+        "description": "Costi estranei",
+        "code": 8000,
+        "sign": -1
+    },
+    {
+        "type": "Risultato estraneo, straordinario, unico o relativo ad altri periodi contabil",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi estranei",
+        "code": 8100,
+        "sign": 1
+    },
+    {
+        "type": "Risultato estraneo, straordinario, unico o relativo ad altri periodi contabil",
+        "subType": null,
+        "group": null,
+        "description": "Costi straordinari, unici o relativi ad altri periodi contabili",
+        "code": 8500,
+        "sign": -1
+    },
+    {
+        "type": "Risultato estraneo, straordinario, unico o relativo ad altri periodi contabil",
+        "subType": null,
+        "group": null,
+        "description": "Ricavi straordinari, unici o relativi ad altri periodi contabili",
+        "code": 8510,
+        "sign": 1
+    },
+    {
+        "type": "Risultato estraneo, straordinario, unico o relativo ad altri periodi contabil",
+        "subType": null,
+        "group": null,
+        "description": "Imposte dirette",
+        "code": 8900,
+        "sign": -1
+    }
+]
