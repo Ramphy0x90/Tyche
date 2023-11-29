@@ -70,19 +70,19 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
-						"production": {
-							"browserTarget": "tyche:build:production"
+            "production": {
+              "buildTarget": "tyche:build:production"
 						},
-						"development": {
-							"browserTarget": "tyche:build:development"
+            "development": {
+              "buildTarget": "tyche:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "tyche:build"
+          "options": {
+            "buildTarget": "tyche:build"
 					}
 				},
 				"test": {
