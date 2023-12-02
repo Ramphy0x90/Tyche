@@ -1,0 +1,16 @@
+<div class="main-container">
+    @for(navOption of navOptions; track navOption.name) {
+        <div class="nav-option"
+            routerLinkActive="active"
+            [routerLink]="navOption.route"
+        >
+            <div class="icon-container flex-center-all">
+                <i [ngClass]="navOption.icon"></i>
+            </div>
+
+            <div class="label-container flex-center-y">
+                {{ navOption.label }}
+            </div>
+        </div> 
+    }
+</div>
