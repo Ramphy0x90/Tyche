@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --color-main-white: #f8f9fa;
+    --color-white: #edeff2;
+    --color-main-whitw-1: #e9ecef;
+    --color-main-black: #343a40;
+    --color-main-black-1: #7c7f82;
+    --color-main-green: #57cc99;
+
+    --space-1: 1px;
+    --space-2: 2px;
+    --space-3: 3px;
+    --space-4: 5px;
+    --space-5: 8px;
+    --space-6: 13px;
+    --space-7: 21px;
+    --space-8: 34px;
+    --space-9: 55px;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 122ms linear;
+}
+
+html,
+body {
+    margin: 0 !important;
+    height: 100%;
+    background-color: var(--color-main-white);
+}
+
+body {
+    color: var(--color-main-black);
+}
+
+.flex-center-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-center-y {
+    display: flex;
+    align-items: center;
+}
