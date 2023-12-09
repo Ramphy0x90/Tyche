@@ -26,6 +26,7 @@ public class Account {
     private String notes;
     private long code;
     private short sign;
+    private String accountsPackage;
 
     @CreatedDate
     private Date createdDate;

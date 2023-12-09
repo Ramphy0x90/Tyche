@@ -1,16 +1,15 @@
 package com.devracom.tyche.msv_chart_of_accounts;
 
+import com.devracom.tyche.exceptions.EntityNotFoundException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import com.mongodb.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,6 +24,29 @@ public class ChartOfAccountsService {
 
     public ChartOfAccountsService(ChartOfAccountsRepository chartOfAccountsRepository) {
         this.chartOfAccountsRepository = chartOfAccountsRepository;
+    }
+
+    public List<Account> getAccounts(@Nullable String accountsPackage) {
+        if(accountsPackage != null) {
+            return chartOfAccountsRepository.findAllByPackage(accountsPackage);
+        }
+
+        return chartOfAccountsRepository.findAll();
+    }
+
+    public Account getAccount(String id) {
+        return chartOfAccountsRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(Account.class, null)
+        );
+    }
+
+    public List<String> getAccountsPackages() {
+        List<Account> accounts = chartOfAccountsRepository.findAll();
+
+        return accounts.stream()
+                .map(Account::getAccountsPackage)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public List<Account> importExample() {
@@ -45,6 +67,7 @@ public class ChartOfAccountsService {
                 String jsonContent = new String(jsonData, StandardCharsets.UTF_8);
                 ObjectMapper objectMapper = new ObjectMapper();
                 List<Account> entities = objectMapper.readValue(jsonContent, new TypeReference<>() {});
+                entities = entities.stream().peek(account -> account.setAccountsPackage("Example1")).collect(Collectors.toList());
 
                 chartOfAccountsRepository.saveAll(entities);
                 inputStream.close();
