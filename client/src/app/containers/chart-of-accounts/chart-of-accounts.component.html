@@ -1,0 +1,80 @@
+<div class="main-container d-flex">
+    <div class="actions-menu d-flex flex-row justify-content-between">
+        <div class="filter-section">
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm dropdown-toggle package-selector"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    {{selectedPackage}}
+                </button>
+    
+                <ul class="dropdown-menu">
+                    @for(package of accountsPackages; track package) {
+                        <li>{{package}}</li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="actions-section d-flex flex-row">
+            <button type="button" class="btn btn-outline-secondary btn-sm"
+                    (click)="loadAccountsExample()">
+                Scaricare esempio
+            </button>
+
+            @if(selectedAccounts.length) {
+                <div class="info-selected-items flex-center-all">
+                    <span class="badge text-bg-danger">
+                        {{selectedAccounts.length}}
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="custom-table">
+        <div class="table-headers">
+            @for(column of tableColumns; track column) {
+                <div class="table-header">{{column.label}}</div>
+            }
+        </div>
+
+        @for(accountType of accountsByType; track accountType) {
+            <div class="accordion accordion-flush" id="account-types">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#' + accountType.type | toId"
+                                aria-expanded="false"
+                                [attr.aria-controls]="accountType.type | toId">
+                            {{accountType.type}}
+                        </button>
+                    </h2>
+
+                    <div [id]="accountType.type | toId" class="accordion-collapse collapse" data-bs-parent="#account-types">
+                        <div class="table-body">
+                            @for(account of accountType.accounts; track account.id) {
+                                <div class="table-row" (click)="selectAccount(account)">
+                                    @for(column of tableColumns; track column) {
+                                        <div class="table-column">
+                                            @if(isAccountSelected(account) && $index == 0) {
+                                                <span class="selected-marker">
+                                                    <i class="bi bi-circle-fill"></i>
+                                                </span>
+                                            }
+
+                                            {{account[column.name]}}
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
