@@ -1,5 +1,6 @@
 package com.devracom.tyche.msv_chart_of_accounts;
 
+import com.devracom.tyche.msv_chart_of_accounts.dto.RestrictedAccount;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -40,6 +41,16 @@ public class ChartOfAccountsController {
     @GetMapping(path = "/all/{package}")
     public List<Account> getChartOfAccountsByPackage(@PathVariable("package") String accountsPackage) {
         return chartOfAccountsService.getAccounts(accountsPackage);
+    }
+
+    @Operation(summary = "Get all chart of accounts restricted by package")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "401", description = "Authorization denied", content = @Content),
+    })
+    @GetMapping(path = "/all/restricted/{package}")
+    public List<RestrictedAccount> getChartOfAccountsRestrictedByPackage(@PathVariable("package") String accountsPackage) {
+        return chartOfAccountsService.getAccountsRestricted(accountsPackage);
     }
 
     @Operation(summary = "Get chart by id")
