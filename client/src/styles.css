@@ -5,7 +5,8 @@
     --color-main-black: #343a40;
     --color-main-black-1: #7c7f82;
     --color-main-green: #57cc99;
-    --color-main-blue: #a8dadc;
+    --color-main-blue: #457b9d;
+    --color-main-blue-1: #a8dadc;
 
     --space-1: 1px;
     --space-2: 2px;
@@ -43,4 +44,19 @@ body {
 .flex-center-y {
     display: flex;
     align-items: center;
+}
+
+.main-container .actions-menu {
+    padding: var(--space-5) 0;
+}
+
+.main-container .actions-menu button,
+.main-container .actions-menu select {
+    height: 30px;
+}
+
+.main-container .actions-menu label {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-main-blue);
 }

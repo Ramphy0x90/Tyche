@@ -1,27 +1,50 @@
 <div class="main-container d-flex">
     <div class="actions-menu d-flex flex-row justify-content-between">
-        <div class="filter-section">
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle package-selector"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    {{selectedPackage}}
-                </button>
-    
-                <ul class="dropdown-menu">
-                    @for(package of accountsPackages; track package) {
-                        <li>{{package}}</li>
-                    }
-                </ul>
+        <div class="filter-section d-flex flex-row">
+            <div class="package-filter d-flex flex-column">
+                <label>Pacchetto</label>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle package-selector"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        {{selectedPackage}}
+                    </button>
+        
+                    <ul class="dropdown-menu">
+                        @for(package of accountsPackages; track package) {
+                            <li>{{package}}</li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="actions-section d-flex flex-row">
-            <button type="button" class="btn btn-outline-secondary btn-sm"
-                    (click)="loadAccountsExample()">
-                Scaricare esempio
-            </button>
+        <div class="actions-section flex-center-y flex-row">
+            @if(!selectedAccounts.length) {
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                        (click)="loadAccountsExample()">
+                    Scaricare esempio
+                </button>
+            } @else {
+                <div class="d-flex flex-row gap-1">
+                    <button type="button" class="btn btn-warning btn-sm"
+                            (click)="editAccounts()">
+                        Modifica
+                    </button>
+
+                    <button type="button" class="btn btn-danger btn-sm"
+                            (click)="loadAccountsExample()">
+                        Elimina
+                    </button>
+
+                    <button type="button" class="btn btn-secondary btn-sm"
+                            (click)="loadAccountsExample()">
+                        Annulla
+                    </button>
+                </div>
+            }
 
             @if(selectedAccounts.length) {
                 <div class="info-selected-items flex-center-all">
@@ -54,7 +77,7 @@
                         </button>
                     </h2>
 
-                    <div [id]="accountType.type | toId" class="accordion-collapse collapse" data-bs-parent="#account-types">
+                    <div [id]="accountType.type | toId" class="accordion-collapse collapse">
                         <div class="table-body">
                             @for(account of accountType.accounts; track account.id) {
                                 <div class="table-row" (click)="selectAccount(account)">
@@ -76,5 +99,26 @@
                 </div>
             </div>
         }
+    </div>
+
+    <!-- Modal -->
+    <div #editAccountsModal class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica piano dei conti</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                ...
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-primary">Salva</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

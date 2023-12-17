@@ -4,9 +4,12 @@
     gap: var(--space-6);
 }
 
-.main-container .actions-menu {
-    background-color: var(--color-main-white-1);
-    padding: var(--space-5);
+.main-container .filter-section {
+    gap: var(--space-6);
+}
+
+.main-container .filter-section .package-filter {
+    width: 112px;
 }
 
 .actions-menu .info-selected-items {
@@ -15,6 +18,9 @@
     border-left: 1px solid var(--color-main-black);
 }
 
+.custom-table .accordion {
+    border-bottom: 2px solid var(--color-main-white);
+}
 
 .custom-table .accordion-button,
 .custom-table .accordion-button.collapsed {
@@ -29,7 +35,7 @@
 }
 
 .custom-table .accordion-button {
-    background-color: var(--color-main-blue);
+    background-color: var(--color-main-blue-1);
 }
 
 .custom-table .table-headers,
@@ -42,7 +48,8 @@
 .custom-table .table-headers {
     background-color: var(--color-main-green);
     color: var(--color-white);
-    padding: var(--space-5)
+    padding: var(--space-5);
+    font-weight: bold;
 }
 
 .custom-table .table-header,

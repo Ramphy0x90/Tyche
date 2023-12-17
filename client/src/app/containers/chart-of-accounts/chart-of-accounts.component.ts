@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { take } from 'rxjs';
 import { Account } from 'src/app/models/account';
 import { ChartOfAccountsService } from 'src/app/services/chart-of-accounts.service';
 import _ from "lodash";
-import { ToIdPipe } from 'src/app/pipes/to-id.pipe';
 
 @Component({
     selector: 'app-chart-of-accounts',
-    standalone: true,
-    imports: [ToIdPipe],
     templateUrl: './chart-of-accounts.component.html',
     styleUrl: './chart-of-accounts.component.css'
 })
 export class ChartOfAccountsComponent implements OnInit {
+    @ViewChild("editAccountsModal") editAccountsModal?: ElementRef;
+
     accounts: Account[] = [];
     accountsPackages: string[] = [];
     accountsByType: { type: string, accounts: Account[] }[] = [];
@@ -22,7 +21,10 @@ export class ChartOfAccountsComponent implements OnInit {
         { name: "group", label: "Gruppo" },
         { name: "description", label: "Descizione" },
         { name: "notes", label: "Note" }
-    ]
+    ];
+
+    onNew: boolean = false;
+    onEdit: boolean = false;
 
     selectedAccounts: string[] = [];
     _selectedPackage?: string;
@@ -65,17 +67,19 @@ export class ChartOfAccountsComponent implements OnInit {
         this.chartOfAccountsService.getPackages()
             .pipe(take(1))
             .subscribe((packages) => {
-                console.log("packages loaded")
                 this.accountsPackages = packages;
                 this.selectedPackage = this.accountsPackages?.[0] || "";
             })
     }
 
     groupAccountsBy(field: string): void {
-        this.accountsByType = _.map(_.groupBy(this.accounts, field), (accounts, type) => ({
-            type,
-            accounts
-        }));
+        this.accountsByType = _.map(
+            _.groupBy(this.accounts, field),
+            (accounts, type) => ({
+                type,
+                accounts
+            })
+        );
     }
 
     selectAccount(account: Account): void {
@@ -89,5 +93,10 @@ export class ChartOfAccountsComponent implements OnInit {
 
     isAccountSelected(account: Account): boolean {
         return this.selectedAccounts.includes(account.id);
+    }
+
+    editAccounts(): void {
+        this.onEdit = true;
+        (<any>this.editAccountsModal)?.open()
     }
 }
