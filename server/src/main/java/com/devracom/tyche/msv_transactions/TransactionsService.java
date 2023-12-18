@@ -29,6 +29,7 @@ public class TransactionsService {
     public Transaction createTransaction(RestrictedTransaction transaction) {
         Transaction newTransaction = Transaction.builder()
                 .account(transaction.getAccount())
+                .value(transaction.getValue())
                 .notes(transaction.getNotes())
                 .isExecuted(transaction.isExecuted())
                 .build();

@@ -25,9 +25,10 @@ public class Transaction {
 
     @DBRef
     private Account account;
-    
+
+    private long value;
     private String notes;
-    private Date ExecutionDate;
+    private Date executionDate;
     private boolean isExecuted;
 
     @CreatedDate
