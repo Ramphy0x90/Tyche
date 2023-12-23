@@ -77,8 +77,6 @@ public class ChartOfAccountsService {
 
                     chartOfAccountsRepository.saveAll(entities);
                     inputStream.close();
-
-                    return entities;
                 }
             } catch (IOException | SecurityException e) {
                 throw new RuntimeException("Error during chart of accounts import");
