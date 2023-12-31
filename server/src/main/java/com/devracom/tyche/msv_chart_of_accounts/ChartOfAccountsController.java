@@ -1,5 +1,6 @@
 package com.devracom.tyche.msv_chart_of_accounts;
 
+import com.devracom.tyche.msv_chart_of_accounts.dto.CreateAccount;
 import com.devracom.tyche.msv_chart_of_accounts.dto.RestrictedAccount;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -7,10 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -82,5 +80,38 @@ public class ChartOfAccountsController {
     @GetMapping(path = "/import/example")
     public List<Account> importExample() {
         return chartOfAccountsService.importExample();
+    }
+
+    @Operation(summary = "Create account")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Account created successfully"),
+            @ApiResponse(responseCode = "401", description = "Authorization denied", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
+    @PostMapping(path = "/create")
+    public ResponseEntity<Account> createAccount(@RequestBody CreateAccount account) {
+        return new ResponseEntity<>(chartOfAccountsService.create(account), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Update account")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Account updated successfully"),
+            @ApiResponse(responseCode = "401", description = "Authorization denied", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
+    @PutMapping(path = "/update")
+    public ResponseEntity<Account> updateAccount(@RequestBody Account account) {
+        return new ResponseEntity<>(chartOfAccountsService.update(account), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Delete account by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Account deleted"),
+            @ApiResponse(responseCode = "401", description = "Authorization denied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Account not found", content = @Content),
+    })
+    @DeleteMapping(path = "/delete/{id}")
+    public void deleteUser(@PathVariable("id") String id) {
+        chartOfAccountsService.delete(id);
     }
 }
