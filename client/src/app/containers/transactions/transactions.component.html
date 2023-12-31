@@ -1,0 +1,173 @@
+<div class="main-container d-flex">
+    <div class="actions-menu d-flex flex-row justify-content-between">
+        <div class="filter-section d-flex flex-row">
+            <div class="package-filter d-flex flex-column">
+                <label>Ordina per</label>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle package-selector"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        Ordina in modo
+                    </button>
+        
+                    <ul class="dropdown-menu">
+                        <li>Ascendente</li>
+                        <li>Descendente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions-section flex-center-y flex-row gap-2">
+            @if(!selectedTransactions.length) {
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="createTransaction()"
+                >
+                    Nuova transazione
+                </button>
+            } @else {
+                <div class="d-flex flex-row gap-2">
+                    @if(selectedTransactions.length == 1) {
+                        <button type="button" class="btn btn-warning btn-sm"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="editTransaction()">
+                            Modifica
+                        </button>
+                    }
+
+                    <button type="button" class="btn btn-danger btn-sm"
+                            (click)="deleteTransaction()">
+                        Elimina
+                    </button>
+                </div>
+            }
+
+            @if(selectedTransactions.length) {
+                <div class="info-selected-items flex-center-all">
+                    <span href="" (click)="cancelEdit()">
+                        Annulla
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="custom-table">
+        <table class="table">
+            <thead>
+              <tr>
+                @for(column of tableColumns; track column) {
+                    <th scope="col">{{column.label}}</th>
+                }
+              </tr>
+            </thead>
+            <tbody>
+                @for(transaction of transactions; track transaction.id) {
+                    <tr (click)="selectTransaction(transaction)">
+                        <td>
+                            @if(isTransactionSelected(transaction)) {
+                                <span class="selected-marker">
+                                    <i class="bi bi-check-lg"></i>
+                                </span>
+                            }
+
+                            {{transaction.account.description}}
+                        </td>
+                        <td>{{transaction.value}}</td>
+                        <td>{{transaction.notes}}</td>
+                        <td>{{transaction.executionDate | date : "dd/MM/yyyy HH:mm"}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if(appMode?.onCreate) {
+                    <h1 class="modal-title fs-5" id="accountModalLabel">Crea transazione</h1>
+                } @else if(appMode?.onEdit) {
+                    <h1 class="modal-title fs-5" id="accountModalLabel">Modifica transazione</h1>
+                }
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="custom-form">
+                    <div class="d-flex flex-row">
+                        <div class="mb-3">
+                            <label for="accountsPackage" class="form-label">Pacchetto piano dei conti</label>
+                            <ng-select id="account"
+                                        [items]="accountsPackages"
+                                        [(ngModel)]="selectedPackage"
+                                        [virtualScroll]="true"
+                                        placeholder="Seleziona pacchetto"
+                            ></ng-select>
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="account" class="form-label">Conto</label>
+                            <ng-select id="account"
+                                        [items]="accounts"
+                                        [(ngModel)]="formModel.account"
+                                        [virtualScroll]="true"
+                                        groupBy="type"
+                                        bindLabel="description"
+                                        placeholder="Seleziona conto"
+                            >
+                                <ng-template ng-optgroup-tmp let-item="item">
+                                    {{item.type}}
+                                </ng-template>
+                            </ng-select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row">
+                        <div class="mb-3">
+                            <label for="value" class="form-label">Valore</label>
+                            <input type="number" id="value" class="form-control" [(ngModel)]="formModel.value">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="executed" class="form-label">Eseguito</label>
+
+                            <ng-select id="executed"
+                                        [items]="[true, false]"
+                                        [(ngModel)]="formModel.isExecuted"
+                                        [clearable]="false"
+                            >
+                                <ng-template ng-label-tmp let-item="item">
+                                    {{item ? "Si" : "No"}}
+                                </ng-template>
+
+                                <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                                    {{item ? "Si" : "No"}}
+                                </ng-template>
+                            </ng-select>
+                        </div>
+                    </div>
+                      
+                    <div class="d-flex flex-row">
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Note</label>
+                            <textarea id="notes" class="form-control" [(ngModel)]="formModel.notes"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelEdit()">annulla</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveTransaction()">Salva</button>
+            </div>
+        </div>
+        </div>
+    </div>  
+</div>
