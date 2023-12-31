@@ -1,8 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { take } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { from, mergeMap, take, toArray } from 'rxjs';
 import { Account } from 'src/app/models/account';
 import { ChartOfAccountsService } from 'src/app/services/chart-of-accounts.service';
 import _ from "lodash";
+import Modal from 'bootstrap/js/dist/modal';
+import { AccountCreate } from 'src/app/models/account.create';
+import { Store } from '@ngrx/store';
+import { app } from 'src/app/store/actions/app.action';
+import { selectAppMode } from 'src/app/store/selectors/app.selector';
+import { AppStateMode } from 'src/app/store/reducers/app.reducer';
 
 @Component({
     selector: 'app-chart-of-accounts',
@@ -10,7 +16,7 @@ import _ from "lodash";
     styleUrl: './chart-of-accounts.component.css'
 })
 export class ChartOfAccountsComponent implements OnInit {
-    @ViewChild("editAccountsModal") editAccountsModal?: ElementRef;
+    appMode?: AppStateMode;
 
     accounts: Account[] = [];
     accountsPackages: string[] = [];
@@ -23,8 +29,18 @@ export class ChartOfAccountsComponent implements OnInit {
         { name: "notes", label: "Note" }
     ];
 
-    onNew: boolean = false;
-    onEdit: boolean = false;
+    accountTemp: AccountCreate = {
+        type: "",
+        subType: "",
+        group: "",
+        description: "",
+        notes: "",
+        code: 0,
+        sign: 1,
+        accountsPackage: ""
+    };
+
+    formModel: AccountCreate | Account = this.accountTemp;
 
     selectedAccounts: string[] = [];
     _selectedPackage?: string;
@@ -38,11 +54,18 @@ export class ChartOfAccountsComponent implements OnInit {
         this.loadAccounts();
     }
 
-    constructor(private chartOfAccountsService: ChartOfAccountsService) { }
+    constructor(
+        private readonly store: Store,
+        private chartOfAccountsService: ChartOfAccountsService
+    ) { }
 
     ngOnInit(): void {
         this.loadAccountsPackages();
         this.loadAccounts();
+
+        this.store.select(selectAppMode).subscribe((appMode) => {
+            this.appMode = appMode;
+        });
     }
 
     loadAccounts(): void {
@@ -95,8 +118,64 @@ export class ChartOfAccountsComponent implements OnInit {
         return this.selectedAccounts.includes(account.id);
     }
 
-    editAccounts(): void {
-        this.onEdit = true;
-        (<any>this.editAccountsModal)?.open()
+    createAccount(): void {
+        this.store.dispatch(app.onCreate());
+        this.formModel = { ...this.accountTemp };
+        this.formModel.accountsPackage = this.selectedPackage;
+
+        const editAccountsModal = new Modal('#accountModal', {});
+        editAccountsModal.toggle();
+    }
+
+    editAccount(): void {
+        this.store.dispatch(app.onEdit());
+        this.formModel = { ...this.accounts.find((account) => account.id == this.selectedAccounts[0])! };
+
+        const editAccountsModal = new Modal('#accountModal', {});
+        editAccountsModal.toggle();
+    }
+
+    cancelEdit(): void {
+        this.store.dispatch(app.onView());
+        this.selectedAccounts = [];
+    }
+
+    saveAccount(): void {
+        if (this.appMode?.onCreate) {
+            this.chartOfAccountsService.create(this.formModel)
+                .pipe(take(1))
+                .subscribe(() => {
+                    this.loadAccounts();
+                });
+        }
+
+        if (this.appMode?.onEdit) {
+            this.chartOfAccountsService.update(<Account>this.formModel)
+                .pipe(take(1))
+                .subscribe((account) => {
+                    const accountIndex = this.accounts.findIndex((account) => account.id == this.selectedAccounts[0]);
+                    const typeIndex = this.accountsByType.findIndex((typeGroup) => {
+                        return typeGroup["type"] == this.accounts[accountIndex]["type"]
+                    });
+
+                    const accountIndexInTypeGroup = this.accountsByType[typeIndex].accounts.findIndex((account) => account.id == this.selectedAccounts[0])
+                    this.accountsByType[typeIndex].accounts[accountIndexInTypeGroup] = account;
+                    this.accounts[accountIndex] = account;
+                    this.selectedAccounts = [];
+
+                });
+        }
+
+        this.store.dispatch(app.onView());
+    }
+
+    deleteAccount(): void {
+        from(this.selectedAccounts).pipe(
+            mergeMap(accountId => this.chartOfAccountsService.delete(accountId)),
+            toArray()
+        ).subscribe(() => {
+            this.selectedAccounts = [];
+            this.loadAccounts();
+        });
     }
 }
