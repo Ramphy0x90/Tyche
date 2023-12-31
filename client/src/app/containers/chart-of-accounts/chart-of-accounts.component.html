@@ -108,67 +108,74 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="accountModalLabel">Modifica conto</h1>
+                    @if(appMode?.onCreate) {
+                        <h1 class="modal-title fs-5" id="accountModalLabel">Crea conto</h1>
+                    } @else if(appMode?.onEdit) {
+                        <h1 class="modal-title fs-5" id="accountModalLabel">Modifica conto</h1>
+                    }
+                    
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <div class="d-flex flex-row">
-                        <div class="mb-3">
-                            <label for="value" class="form-label">Pacchetto</label>
-                            <input type="text" id="value" class="form-control" [(ngModel)]="formModel.accountsPackage" [value]="selectedPackage" readonly>
+                    <div class="custom-form">
+                        <div class="d-flex flex-row">
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Pacchetto</label>
+                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.accountsPackage" [value]="selectedPackage" readonly>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Codice</label>
+                                <input type="number" id="value" class="form-control" [(ngModel)]="formModel.code" [disabled]="!!appMode?.onEdit">
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="executed" class="form-label">Segno</label>
+    
+                                <ng-select id="executed"
+                                            [items]="[1, -1]"
+                                            [(ngModel)]="formModel.sign"
+                                            [clearable]="false"
+                                >
+                                    <ng-template ng-label-tmp let-item="item">
+                                        {{item > 0 ? "+" : "-"}}
+                                    </ng-template>
+    
+                                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                                        {{item > 0 ? "+" : "-"}}
+                                    </ng-template>
+                                </ng-select>
+                            </div>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="value" class="form-label">Codice</label>
-                            <input type="number" id="value" class="form-control" [(ngModel)]="formModel.code" [disabled]="!!appMode?.onEdit">
+    
+                        <div class="d-flex flex-row">
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Tipo</label>
+                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.type">
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Sotto tipo</label>
+                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.subType">
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Gruppo</label>
+                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.group">
+                            </div>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="executed" class="form-label">Segno</label>
-
-                            <ng-select id="executed"
-                                        [items]="[1, -1]"
-                                        [(ngModel)]="formModel.sign"
-                                        [clearable]="false"
-                            >
-                                <ng-template ng-label-tmp let-item="item">
-                                    {{item > 0 ? "+" : "-"}}
-                                </ng-template>
-
-                                <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
-                                    {{item > 0 ? "+" : "-"}}
-                                </ng-template>
-                            </ng-select>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row">
-                        <div class="mb-3">
-                            <label for="value" class="form-label">Tipo</label>
-                            <input type="text" id="value" class="form-control" [(ngModel)]="formModel.type">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="value" class="form-label">Sotto tipo</label>
-                            <input type="text" id="value" class="form-control" [(ngModel)]="formModel.subType">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="value" class="form-label">Gruppo</label>
-                            <input type="text" id="value" class="form-control" [(ngModel)]="formModel.group">
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row">
-                        <div class="mb-3">
-                            <label for="value" class="form-label">Descrizione</label>
-                            <input type="text" id="value" class="form-control" [(ngModel)]="formModel.description">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="value" class="form-label">Note</label>
-                            <input type="text" id="value" class="form-control" [(ngModel)]="formModel.notes">
+    
+                        <div class="d-flex flex-row">
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Descrizione</label>
+                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.description">
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Note</label>
+                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.notes">
+                            </div>
                         </div>
                     </div>
                 </div>

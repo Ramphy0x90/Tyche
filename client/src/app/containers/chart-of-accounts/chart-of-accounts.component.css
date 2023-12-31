@@ -13,9 +13,9 @@
 }
 
 .actions-menu .info-selected-items {
-    padding: var(--space-4);
-    margin-left: var(--space-3);
+    padding: var(--space-5);
     border-left: 1px solid var(--color-main-black);
+    cursor: pointer;
 }
 
 .custom-table .accordion {
@@ -66,12 +66,12 @@
     border-bottom: none;
 }
 
-.custom-table .table-row .selected-marker {
-    font-size: 13px;
-    color: var(--color-main-green);
-}
-
 .main-container .table-row:hover {
     cursor: pointer;
     background-color: var(--color-main-white-1)
+}
+
+.custom-form .flex-row>div {
+    flex: 1 1 calc(100% / 3);
+    width: calc(100% / 3);
 }

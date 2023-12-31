@@ -10,6 +10,6 @@ public class RestrictedTransaction {
     private long value;
     private String notes;
 
-    @JsonProperty
+    @JsonProperty("isExecuted")
     private boolean isExecuted;
 }

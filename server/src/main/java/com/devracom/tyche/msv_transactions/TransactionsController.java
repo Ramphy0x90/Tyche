@@ -59,9 +59,9 @@ public class TransactionsController {
             @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
             @ApiResponse(responseCode = "404", description = "Transaction not found", content = @Content),
     })
-    @PutMapping(path = "/update/{id}")
-    public ResponseEntity<Transaction> updateTransaction(@PathVariable("id") String id, @RequestBody Transaction transaction) {
-        return new ResponseEntity<>(transactionsService.updateTransaction(id, transaction), HttpStatus.OK);
+    @PutMapping(path = "/update")
+    public ResponseEntity<Transaction> updateTransaction(@RequestBody Transaction transaction) {
+        return new ResponseEntity<>(transactionsService.updateTransaction(transaction), HttpStatus.OK);
     }
 
     @Operation(summary = "Delete transaction by id")

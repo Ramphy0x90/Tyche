@@ -37,17 +37,12 @@ public class TransactionsService {
         return transactionsRepository.save(newTransaction);
     }
 
-    public Transaction updateTransaction(String id, Transaction transaction) {
-        Transaction storedTransaction = transactionsRepository.findById(id).orElseThrow(
+    public Transaction updateTransaction(Transaction transaction) {
+        transactionsRepository.findById(transaction.getId()).orElseThrow(
                 () -> new EntityNotFoundException(Transaction.class, null)
         );
 
-        storedTransaction.setAccount(transaction.getAccount());
-        storedTransaction.setNotes(transaction.getNotes());
-        storedTransaction.setExecutionDate(transaction.getExecutionDate());
-        storedTransaction.setExecuted(transaction.isExecuted());
-
-        return storedTransaction;
+        return transactionsRepository.save(transaction);
     }
 
     public void deleteTransaction(String id) {

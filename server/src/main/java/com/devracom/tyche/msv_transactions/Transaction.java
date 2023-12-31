@@ -2,6 +2,7 @@ package com.devracom.tyche.msv_transactions;
 
 
 import com.devracom.tyche.msv_chart_of_accounts.Account;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,6 +30,8 @@ public class Transaction {
     private long value;
     private String notes;
     private Date executionDate;
+
+    @JsonProperty("isExecuted")
     private boolean isExecuted;
 
     @CreatedDate
