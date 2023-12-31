@@ -1,7 +1,4 @@
-import { BasicModel } from "./basic-model";
-
-export interface Account extends BasicModel {
-    id: string;
+export interface AccountCreate {
     type: string;
     subType: string;
     group: string;
