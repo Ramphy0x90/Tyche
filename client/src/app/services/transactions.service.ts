@@ -9,7 +9,7 @@ import { TransactionRestricted } from '../models/transaction.restricted';
     providedIn: 'root'
 })
 export class TransactionsService {
-    private readonly API_URI = "api/v1/transactions";
+    private readonly API_URI = "api/v1/transaction";
 
     constructor(private httpClient: HttpClient) { }
 
