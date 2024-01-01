@@ -4,9 +4,11 @@ import { HomeComponent } from './containers/home/home.component';
 import { TransactionsComponent } from './containers/transactions/transactions.component';
 import { ReportsComponent } from './containers/reports/reports.component';
 import { ChartOfAccountsComponent } from './containers/chart-of-accounts/chart-of-accounts.component';
+import { LoginComponent } from './containers/login/login.component';
 
 const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "login" },
+    { path: "login", component: LoginComponent },
     { path: "home", component: HomeComponent },
     { path: "transactions", component: TransactionsComponent },
     { path: "reports", component: ReportsComponent },

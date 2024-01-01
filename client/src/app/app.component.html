@@ -1,5 +1,9 @@
-<div class="main-container d-flex">
-    <app-side-nav-bar></app-side-nav-bar>
+<div class="main-container d-flex" [ngClass]="userLogged ? 'flex-row' : 'flex-column'">
+    @if(userLogged) {
+        <app-side-nav-bar></app-side-nav-bar>
+    } @else {
+        <app-nav-bar></app-nav-bar>
+    }
 
     <div class="content-container">
         <router-outlet></router-outlet>
