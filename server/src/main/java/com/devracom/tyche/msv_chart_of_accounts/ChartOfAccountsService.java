@@ -1,6 +1,7 @@
 package com.devracom.tyche.msv_chart_of_accounts;
 
 import com.devracom.tyche.exceptions.EntityNotFoundException;
+import com.devracom.tyche.msv_chart_of_accounts.dto.CreateAccount;
 import com.devracom.tyche.msv_chart_of_accounts.dto.RestrictedAccount;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -84,5 +85,32 @@ public class ChartOfAccountsService {
         }
 
         return chartOfAccountsRepository.findAll();
+    }
+
+    public Account create(CreateAccount account) {
+        Account newAccount = Account.builder()
+                .type(account.getType())
+                .subType(account.getSubType())
+                .group(account.getGroup())
+                .description(account.getDescription())
+                .notes(account.getNotes())
+                .code(account.getCode())
+                .sign(account.getSign())
+                .accountsPackage(account.getAccountsPackage())
+                .build();
+
+        return chartOfAccountsRepository.save(newAccount);
+    }
+
+    public Account update(Account account) {
+        return chartOfAccountsRepository.save(account);
+    }
+
+    public void delete(String id) {
+        Account account = chartOfAccountsRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(Account.class, null)
+        );
+
+        chartOfAccountsRepository.delete(account);
     }
 }
