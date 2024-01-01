@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
 import { StoreSources } from "../store.module";
+import { UserLoginResponse } from "src/app/models/user-login-response";
 
 export enum UserActionEvents {
     LOG_IN = "Logged in",
@@ -9,19 +10,13 @@ export enum UserActionEvents {
     DELETE = "Deleted"
 };
 
-export interface UserAuthenticationAction {
-    userId: string,
-    userDisplayName: string,
-    authenticated: boolean,
-};
-
 export const user = createActionGroup({
     source: StoreSources.USER,
     events: {
         [UserActionEvents.CREATE]: props<any>(),
         [UserActionEvents.EDIT]: props<any>(),
         [UserActionEvents.DELETE]: emptyProps(),
-        [UserActionEvents.LOG_IN]: props<UserAuthenticationAction>(),
-        [UserActionEvents.LOG_OUT]: props<UserAuthenticationAction>(),
+        [UserActionEvents.LOG_IN]: props<UserLoginResponse>(),
+        [UserActionEvents.LOG_OUT]: emptyProps(),
     }
 });
