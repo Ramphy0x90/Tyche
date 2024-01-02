@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ContainersModule } from './containers/containers.module';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/reducers/app.reducer';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { userReducer } from './store/reducers/user.reducer';
+import { authInterceptor } from './interceptors/auth.interceptor';
+import { errorHandlerInterceptor } from './interceptors/error-handler.interceptor';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,9 @@ import { userReducer } from './store/reducers/user.reducer';
         ContainersModule,
         StoreModule.forRoot({ app: appReducer, user: userReducer })
     ],
-    providers: [],
+    providers: [provideHttpClient(
+        withInterceptors([authInterceptor]))
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
