@@ -44,6 +44,16 @@ public class UsersController {
         return new ResponseEntity<>(usersService.getUserById(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Check if user token is valid")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "403", description = "Invalid token", content = @Content),
+    })
+    @GetMapping(path = "/check/token/{token}")
+    public ResponseEntity<UserLoginResponse> verifyToken(@PathVariable("token") String token) {
+        return new ResponseEntity<>(usersService.verifyToken(token), HttpStatus.OK);
+    }
+
     @Operation(summary = "User login")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),

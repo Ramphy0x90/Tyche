@@ -44,6 +44,10 @@ public class UsersService {
         );
     }
 
+    public UserLoginResponse verifyToken(String token) {
+        return userAuthenticationProvider.verifyToken(token);
+    }
+
     public UserLoginResponse login(UserLogin credentials) {
         User user = usersRepository.findByEmail(credentials.getEmail()).orElseThrow(
                 () -> new EntityNotFoundException(User.class, null)
