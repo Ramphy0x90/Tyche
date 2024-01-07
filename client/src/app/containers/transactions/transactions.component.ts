@@ -143,6 +143,7 @@ export class TransactionsComponent implements OnInit {
                 });
         }
 
+        this.selectedTransactions = [];
         this.store.dispatch(app.onView());
     }
 

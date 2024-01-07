@@ -76,7 +76,15 @@
 
                             {{transaction.account.description}}
                         </td>
-                        <td>{{transaction.value}}</td>
+                        <td>
+                            {{transaction.value * transaction.account.sign}}
+
+                            @if(transaction.account.sign > 0) {
+                                <i class="bi bi-arrow-up-right positive"></i>
+                            } @else {
+                                <i class="bi bi-arrow-down-right negative"></i>
+                            }
+                        </td>
                         <td>{{transaction.notes}}</td>
                         <td>{{transaction.executionDate | date : "dd/MM/yyyy HH:mm"}}</td>
                     </tr>
