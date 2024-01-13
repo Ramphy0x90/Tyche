@@ -13,8 +13,17 @@
                     </button>
         
                     <ul class="dropdown-menu">
+                        <li (click)="loadAccountsExample()">
+                            <i class="bi bi-download"></i>
+                            <span>Importa esempio</span>
+                        </li>
+
+                        <hr>
+
                         @for(package of accountsPackages; track package) {
-                            <li>{{package}}</li>
+                            @if(package) {
+                                <li (click)="selectPackage(package)">{{package}}</li>
+                            }
                         }
                     </ul>
                 </div>
@@ -26,11 +35,6 @@
                 <button type="button" class="btn btn-outline-secondary btn-sm"
                 (click)="createAccount()">
                     Crea conto
-                </button>
-
-                <button type="button" class="btn btn-outline-secondary btn-sm"
-                        (click)="loadAccountsExample()">
-                    Importa esempio
                 </button>
             } @else {
                 <div class="d-flex flex-row gap-2 flex-center-y">
@@ -122,7 +126,7 @@
                         <div class="d-flex flex-row">
                             <div class="mb-3">
                                 <label for="value" class="form-label">Pacchetto</label>
-                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.accountsPackage" [value]="selectedPackage" readonly>
+                                <input type="text" id="value" class="form-control" [(ngModel)]="formModel.accountsPackage" [value]="selectedPackage">
                             </div>
     
                             <div class="mb-3">

@@ -105,6 +105,11 @@ export class ChartOfAccountsComponent implements OnInit {
         );
     }
 
+    selectPackage(accountsPackage: string): void {
+        this.selectedPackage = accountsPackage;
+        this.loadAccounts();
+    }
+
     selectAccount(account: Account): void {
         if (!this.isAccountSelected(account)) {
             this.selectedAccounts.push(account.id);
