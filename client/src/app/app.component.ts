@@ -38,9 +38,11 @@ export class AppComponent implements OnInit {
                 .pipe(take(1))
                 .subscribe((response) => {
                     if (response) {
-                        console.log(response)
                         this.store.dispatch(user.loggedIn(response));
-                        this.router.navigate(["home"]);
+
+                        if (this.router.url === "/login") {
+                            this.router.navigate(["home"]);
+                        }
                     } else {
                         this.store.dispatch(user.loggedOut());
                         this.router.navigate(["login"]);
