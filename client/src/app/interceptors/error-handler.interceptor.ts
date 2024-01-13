@@ -31,6 +31,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 
                 if (!error.ok && error.status == 0) {
                     msg = "Server non raggiungibile :(";
+                } else if (error.error.error) {
+                    msg = error.error.message;
                 } else if (error.error) {
                     msg = `${error.error}`;
                 } else {
@@ -41,6 +43,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
                     this.store.dispatch(user.loggedOut());
                     this.router.navigate(["login"]);
                 }
+
+                console.log(msg)
 
                 this.toastr.warning(msg);
                 return throwError(() => msg);
