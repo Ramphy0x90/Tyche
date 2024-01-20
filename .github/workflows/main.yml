@@ -22,8 +22,9 @@ jobs:
     - name: Deploy to Droplet
       run: |
         ssh -o StrictHostKeyChecking=no root@143.244.207.235 << 'ENDSSH'
-          pwd && whoami
           cd /var/www/tyche.devracom.com
+          pwd && whoami
+          ifconfig
           rm -r Tyche
           git clone git@github.com:Ramphy0x90/Tyche.git
           ./init
