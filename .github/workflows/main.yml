@@ -23,6 +23,6 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no root@143.244.207.235 << 'ENDSSH'
           cd /var/www/tyche.ramphy.ch
-          git pull
+          git@github.com:Ramphy0x90/Tyche.git
           # Add any build steps you need here
         ENDSSH
