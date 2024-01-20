@@ -17,6 +17,6 @@ FROM amazoncorretto:19
 
 WORKDIR /app
 
-COPY --from=build target/tyche_server.jar app.jar
+COPY --from=build /app/target/tyche_server.jar app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
