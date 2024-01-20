@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+    production: true,
+    serverBase: "http://tyche.devracom.ch",
+    server: "http://tyche.devracom.ch",
 };
