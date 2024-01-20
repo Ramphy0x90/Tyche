@@ -5,6 +5,7 @@ WORKDIR /app
 COPY mvnw .
 COPY mvnw.cmd .
 COPY pom.xml .
+COPY .mvn .mvn
 
 RUN ./mvnw wrapper:wrapper
 RUN ./mvnw dependency:go-offline
