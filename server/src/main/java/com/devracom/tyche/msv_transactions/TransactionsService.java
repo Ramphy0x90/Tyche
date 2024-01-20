@@ -2,6 +2,8 @@ package com.devracom.tyche.msv_transactions;
 
 import com.devracom.tyche.exceptions.EntityNotFoundException;
 import com.devracom.tyche.msv_transactions.dto.RestrictedTransaction;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +18,14 @@ public class TransactionsService {
         this.transactionsRepository = transactionsRepository;
     }
 
-    public List<Transaction> getTransactions() {
-        return transactionsRepository.findAll();
+    public List<Transaction> getTransactions(int from, int limit) {
+        if(from > 0 && limit != -1) {
+            PageRequest pageRequest = PageRequest.of(from, limit, Sort.Direction.DESC, "executionDate");
+            return transactionsRepository.findAll(pageRequest).stream().toList();
+        } else {
+            Sort sort = Sort.by(Sort.Direction.DESC, "executionDate");
+            return transactionsRepository.findAll(sort);
+        }
     }
 
     public Transaction getTransaction(String id) {

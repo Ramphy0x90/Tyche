@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { UserRestricted } from 'src/app/models/user.restricted';
+import { UserService } from 'src/app/services/user.service';
+import { selectUserState } from 'src/app/store/selectors/user.selector';
 import { NavBarOption } from 'src/app/types/nav-bar-option';
 
 @Component({
@@ -10,7 +15,7 @@ import { NavBarOption } from 'src/app/types/nav-bar-option';
     templateUrl: './side-nav-bar.component.html',
     styleUrl: './side-nav-bar.component.css'
 })
-export class SideNavBarComponent {
+export class SideNavBarComponent implements OnInit {
     readonly navOptions: NavBarOption[] = [
         {
             name: "Home",
@@ -25,16 +30,29 @@ export class SideNavBarComponent {
             icon: "bi bi-cash-stack"
         },
         {
-            name: "Reports",
-            label: "Rapporti",
-            route: "reports",
-            icon: "bi bi-bar-chart-line"
-        },
-        {
             name: "Chart of accounts",
             label: "Piano dei conti",
             route: "chart-of-accounts",
             icon: "bi bi-pie-chart"
         }
-    ]
+    ];
+
+    loggedUser?: UserRestricted;
+
+    constructor(
+        private readonly store: Store,
+        private userService: UserService,
+        private router: Router
+    ) { }
+
+    ngOnInit(): void {
+        this.store.select(selectUserState).subscribe((userState) => {
+            this.loggedUser = userState.user;
+        });
+    }
+
+    logout(): void {
+        this.userService.logout();
+        this.router.navigate(["login"]);
+    }
 }

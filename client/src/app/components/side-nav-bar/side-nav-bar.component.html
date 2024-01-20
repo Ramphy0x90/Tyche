@@ -1,16 +1,43 @@
-<div class="main-container">
-    @for(navOption of navOptions; track navOption.name) {
-        <div class="nav-option"
-            routerLinkActive="active"
-            [routerLink]="navOption.route"
-        >
-            <div class="icon-container flex-center-all">
-                <i [ngClass]="navOption.icon"></i>
-            </div>
+<div class="main-container d-flex flex-column gap-3">
+    @if(loggedUser) {
+        <div class="user-section">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle"></i> 
+                    <span>{{loggedUser.name}} {{loggedUser.surname}}</span>
+                </a>
+              
+                <ul class="dropdown-menu">
+                    <li>
+                        <i class="bi bi-gear"></i>
+                        <span>Impostazioni</span>
+                    </li>
 
-            <div class="label-container flex-center-y">
-                {{ navOption.label }}
-            </div>
-        </div> 
+                    <hr>
+
+                    <li (click)="logout()">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </li>
+                </ul>
+              </div>
+        </div>
     }
+
+    <div class="options-container">
+        @for(navOption of navOptions; track navOption.name) {
+            <div class="nav-option"
+                routerLinkActive="active"
+                [routerLink]="navOption.route"
+            >
+                <div class="icon-container flex-center-all">
+                    <i [ngClass]="navOption.icon"></i>
+                </div>
+    
+                <div class="label-container flex-center-y">
+                    {{ navOption.label }}
+                </div>
+            </div> 
+        }
+    </div>
 </div>

@@ -84,7 +84,7 @@ public class ChartOfAccountsService {
             }
         }
 
-        return chartOfAccountsRepository.findAll();
+        return chartOfAccountsRepository.findAllByPackage("Example1");
     }
 
     public Account create(CreateAccount account) {

@@ -9,6 +9,13 @@ import { TransactionsService } from 'src/app/services/transactions.service';
 import { app } from 'src/app/store/actions/app.action';
 import { AppStateMode } from 'src/app/store/reducers/app.reducer';
 import { selectAppMode } from 'src/app/store/selectors/app.selector';
+import _ from 'lodash';
+
+interface TableColumn {
+    name: string,
+    label: string,
+    format?: string
+}
 
 @Component({
     selector: 'app-transactions',
@@ -17,6 +24,13 @@ import { selectAppMode } from 'src/app/store/selectors/app.selector';
 })
 export class TransactionsComponent implements OnInit {
     appMode?: AppStateMode;
+
+    tableColumns: TableColumn[] = [
+        { name: "account", label: "Conto" },
+        { name: "value", label: "Valore" },
+        { name: "notes", label: "Note" },
+        { name: "executionDate", label: "Data esecuzione", format: "date" }
+    ];
 
     transactionTemp: TransactionRestricted = {
         account: undefined,
@@ -27,16 +41,12 @@ export class TransactionsComponent implements OnInit {
 
     formModel: TransactionRestricted | Transaction = this.transactionTemp;
 
+    sortingBy: TableColumn = this.tableColumns.find((column) => column.name == "executionDate")!;
+    orderingBy: "asc" | "desc" = "desc";
+
     transactions: Transaction[] = [];
     accountsPackages: string[] = [];
     accounts: AccountRestricted[] = [];
-
-    tableColumns: { name: string, label: string, format?: string }[] = [
-        { name: "account", label: "Conto" },
-        { name: "value", label: "Valore" },
-        { name: "notes", label: "Note" },
-        { name: "executionDate", label: "Data esecuzione", format: "date" }
-    ];
 
     selectedTransactions: string[] = [];
     _selectedPackage: string = "";
@@ -92,6 +102,24 @@ export class TransactionsComponent implements OnInit {
             .subscribe((accounts) => {
                 this.accounts = accounts
             });
+    }
+
+    sortTable(column: TableColumn, order: "asc" | "desc" = this.orderingBy): void {
+        this.sortingBy = column;
+        this.transactions = _.orderBy(
+            this.transactions,
+            (tableColumn) => {
+
+                if (column.name == "account") {
+                    return tableColumn.account["description"];
+                } else if (column.name == "value") {
+                    return tableColumn.value * tableColumn.account?.sign;
+                }
+
+                return tableColumn[column.name];
+            },
+            [order]
+        );
     }
 
     selectTransaction(transaction: Transaction): void {

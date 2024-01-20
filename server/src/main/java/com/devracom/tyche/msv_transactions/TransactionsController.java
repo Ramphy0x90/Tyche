@@ -26,8 +26,8 @@ public class TransactionsController {
             @ApiResponse(responseCode = "401", description = "Authorization denied", content = @Content),
     })
     @GetMapping("/all")
-    public List<Transaction> getTransactions() {
-        return transactionsService.getTransactions();
+    public List<Transaction> getTransactions(@RequestParam int from, @RequestParam int limit) {
+        return transactionsService.getTransactions(from, limit);
     }
 
     @Operation(summary = "Get transaction by id")

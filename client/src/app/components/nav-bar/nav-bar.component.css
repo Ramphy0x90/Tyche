@@ -1,0 +1,16 @@
+.navbar {
+    background-color: var(--color-main-green);
+}
+
+.navbar .navbar-nav {
+    margin-left: auto;
+}
+
+.navbar a {
+    color: var(--color-main-white);
+    font-weight: bold;
+}
+
+.navbar a.active {
+    border-bottom: 2px solid var(--color-main-white);
+}

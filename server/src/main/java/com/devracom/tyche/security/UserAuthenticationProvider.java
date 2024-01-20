@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.devracom.tyche.exceptions.EntityNotFoundException;
+import com.devracom.tyche.exceptions.InvalidTokenException;
 import com.devracom.tyche.msv_users.User;
 import com.devracom.tyche.msv_users.UsersRepository;
 import com.devracom.tyche.msv_users.dto.RestrictedUser;
@@ -62,17 +63,22 @@ public class UserAuthenticationProvider {
     public UserLoginResponse verifyToken(String token) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         JWTVerifier verifier = JWT.require(algorithm).build();
-        DecodedJWT decodedJWT = verifier.verify(token);
 
-        if(decodedJWT.getExpiresAt().after(new Date())) {
-            RestrictedUser user = usersRepository.findByEmailRestricted(decodedJWT.getClaim("email").asString()).orElseThrow(
-                    () -> new EntityNotFoundException(User.class, null)
-            );
+        try {
+            DecodedJWT decodedJWT = verifier.verify(token);
 
-            return UserLoginResponse.builder()
-                    .user(usersRepository.findByIdRestricted(user.getId()).orElse(null))
-                    .token(token)
-                    .build();
+            if(decodedJWT.getExpiresAt().after(new Date())) {
+                RestrictedUser user = usersRepository.findByEmailRestricted(decodedJWT.getClaim("email").asString()).orElseThrow(
+                        () -> new EntityNotFoundException(User.class, null)
+                );
+
+                return UserLoginResponse.builder()
+                        .user(usersRepository.findByIdRestricted(user.getId()).orElse(null))
+                        .token(token)
+                        .build();
+            }
+        } catch (RuntimeException e) {
+            throw new InvalidTokenException();
         }
 
         return null;

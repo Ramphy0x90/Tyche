@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { UserLogin } from 'src/app/models/user-login';
 import { UserService } from 'src/app/services/user.service';
 import { user } from 'src/app/store/actions/user.actions';
+import { selectUserIsLogged } from 'src/app/store/selectors/user.selector';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     loginForm: UserLogin = {
         email: "",
         password: ""
@@ -22,6 +23,15 @@ export class LoginComponent {
         private userService: UserService,
         private router: Router
     ) { }
+
+    ngOnInit(): void {
+        this.store.select(selectUserIsLogged)
+            .subscribe((userLogged) => {
+                if (userLogged) {
+                    this.router.navigate(["home"]);
+                }
+            });
+    }
 
     login(): void {
         this.userService.login(this.loginForm)

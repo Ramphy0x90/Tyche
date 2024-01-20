@@ -44,8 +44,6 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
                     this.router.navigate(["login"]);
                 }
 
-                console.log(msg)
-
                 this.toastr.warning(msg);
                 return throwError(() => msg);
             })

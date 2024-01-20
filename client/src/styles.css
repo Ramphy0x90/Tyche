@@ -93,3 +93,22 @@ ng-select {
     flex: 0 0 50%;
     width: 50%;
 }
+
+.main-container .dropdown-menu {
+    padding: 0;
+}
+
+.main-container .dropdown-menu li {
+    padding: var(--space-2) var(--space-5);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.main-container .dropdown-menu li i {
+    font-size: 18px;
+    margin-right: var(--space-5);
+}
+
+.main-container .dropdown-menu li:hover {
+    background-color: var(--color-main-white-1);
+}

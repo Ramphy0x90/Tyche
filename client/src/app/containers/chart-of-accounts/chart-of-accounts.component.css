@@ -12,25 +12,6 @@
     width: 112px;
 }
 
-.main-container .package-filter .dropdown-menu {
-    padding: 0;
-}
-
-.package-filter .dropdown-menu li {
-    padding: var(--space-2) var(--space-5);
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.package-filter .dropdown-menu li i {
-    font-size: 18px;
-    margin-right: var(--space-5);
-}
-
-.package-filter .dropdown-menu li:hover {
-    background-color: var(--color-main-white-1);
-}
-
 .actions-menu .info-selected-items {
     padding: var(--space-5);
     border-left: 1px solid var(--color-main-black);

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Transaction } from '../models/transaction';
@@ -14,8 +14,13 @@ export class TransactionsService {
     constructor(private httpClient: HttpClient) { }
 
     getAll(from: number = 0, limit: number = -1): Observable<Transaction[]> {
+        const params = new HttpParams()
+            .set("from", from)
+            .set("limit", limit);
+
         return this.httpClient.get<Transaction[]>(
-            `${environment.server}/${this.API_URI}/all`
+            `${environment.server}/${this.API_URI}/all`,
+            { params }
         );
     }
 

@@ -15,5 +15,8 @@ export const userState: UserState = {
 export const userReducer = createReducer(
     userState,
     on(user.loggedIn, (state, data) => ({ ...state, ...data })),
-    on(user.loggedOut, (state, data) => ({ ...state, ...data }))
+    on(user.loggedOut, (state) => {
+        localStorage.clear();
+        return ({ ...state, user: undefined, token: undefined });
+    })
 );

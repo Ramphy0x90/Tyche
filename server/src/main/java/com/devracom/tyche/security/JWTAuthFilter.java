@@ -1,5 +1,6 @@
 package com.devracom.tyche.security;
 
+import com.devracom.tyche.exceptions.InvalidTokenException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, InvalidTokenException {
         String header = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         if(header != null) {
@@ -31,7 +32,6 @@ public class JWTAuthFilter extends OncePerRequestFilter {
                     );
                 } catch (RuntimeException e) {
                     SecurityContextHolder.clearContext();
-
                 }
             }
         }

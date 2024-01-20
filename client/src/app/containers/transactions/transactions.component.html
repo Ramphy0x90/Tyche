@@ -1,6 +1,6 @@
 <div class="main-container d-flex">
     <div class="actions-menu d-flex flex-row justify-content-between">
-        <div class="filter-section d-flex flex-row">
+        <div class="filter-section d-flex flex-row gap-2">
             <div class="package-filter d-flex flex-column">
                 <label>Ordina per</label>
 
@@ -9,12 +9,43 @@
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        Ordina in modo
+                        Ordina per <strong>{{sortingBy.label}}</strong>
                     </button>
         
                     <ul class="dropdown-menu">
-                        <li>Ascendente</li>
-                        <li>Descendente</li>
+                        @for(tableColumn of tableColumns; track tableColumn) {
+                            <li (click)="sortTable(tableColumn)">                                
+                                {{tableColumn.label}}
+
+                                @if(tableColumn.name == sortingBy.name) {
+                                    <span class="selected-marker">
+                                        <i class="bi bi-check-lg"></i>
+                                    </span>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <div class="package-filter d-flex flex-column">
+                <label>Ordina in modo</label>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle package-selector"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        Ordina in modo <strong>{{orderingBy}}</strong>
+                    </button>
+        
+                    <ul class="dropdown-menu">
+                        <li (click)="sortTable(sortingBy, 'asc')">
+                            Ascendente
+                        </li>
+                        <li (click)="sortTable(sortingBy, 'desc')">
+                            Discendente
+                        </li>
                     </ul>
                 </div>
             </div>

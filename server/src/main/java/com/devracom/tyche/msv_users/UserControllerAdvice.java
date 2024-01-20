@@ -2,6 +2,7 @@ package com.devracom.tyche.msv_users;
 
 import com.devracom.tyche.exceptions.ExistingUserException;
 import com.devracom.tyche.exceptions.InvalidCredentialsException;
+import com.devracom.tyche.exceptions.InvalidTokenException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,6 +14,13 @@ public class UserControllerAdvice {
     public ResponseEntity<?> handleException(InvalidCredentialsException e) {
         return ResponseEntity
                 .status(HttpStatus.UNAUTHORIZED)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<?> handleException(InvalidTokenException e) {
+        return ResponseEntity
+                .status(HttpStatus.FORBIDDEN)
                 .body(e.getMessage());
     }
 
