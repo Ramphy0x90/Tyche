@@ -1,10 +1,13 @@
 FROM ubuntu:latest as build
 
 # Install Java
-RUN apt-get update && \
-    apt-get install -y wget software-properties-common && \
+RUN cd /tmp
+RUN apt update && \
+    apt install -y wget software-properties-common && \
     wget https://corretto.aws/downloads/latest/amazon-corretto-19-x64-linux-jdk.deb && \
-    apt-get install -y ./amazon-corretto-19-x64-linux-jdk.deb
+    apt install -y ./amazon-corretto-19-x64-linux-jdk.deb && \
+    apt install -y iputils-ping && \
+    apt install net-tools
 
 # Set up working directory
 WORKDIR /app
@@ -27,10 +30,13 @@ RUN ./mvnw clean package -DskipTests
 FROM ubuntu:latest
 
 # Install Java
-RUN apt-get update && \
-    apt-get install -y wget software-properties-common && \
+RUN cd /tmp
+RUN apt update && \
+    apt install -y wget software-properties-common && \
     wget https://corretto.aws/downloads/latest/amazon-corretto-19-x64-linux-jdk.deb && \
-    apt-get install -y ./amazon-corretto-19-x64-linux-jdk.deb
+    apt install -y ./amazon-corretto-19-x64-linux-jdk.deb && \
+    apt install -y iputils-ping && \
+    apt install net-tools
 
 WORKDIR /app
 
