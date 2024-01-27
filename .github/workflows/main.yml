@@ -26,5 +26,8 @@ jobs:
           rm -r Tyche
           git clone git@github.com:Ramphy0x90/Tyche.git
           ./init
-          # Add any build steps you need here
+          docker image prune -f
+          docker stop tychesvr
+          docker rm tychesvr
+          docker run -d -p 8080:8080 --network bridge --name tychesvr tyche
         ENDSSH
