@@ -2,10 +2,9 @@ FROM ubuntu:latest as build
 
 # Install Java
 RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:linuxuprising/java && \
-    apt-get update && \
-    apt-get install -y java-19-amazon-corretto-jdk
+    apt-get install -y wget software-properties-common && \
+    wget https://corretto.aws/downloads/latest/amazon-corretto-19-x64-linux-jdk.deb && \
+    apt-get install -y ./amazon-corretto-19-x64-linux-jdk.deb
 
 # Set up working directory
 WORKDIR /app
@@ -29,10 +28,9 @@ FROM ubuntu:latest
 
 # Install Java
 RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:linuxuprising/java && \
-    apt-get update && \
-    apt-get install -y java-19-amazon-corretto-jdk
+    apt-get install -y wget software-properties-common && \
+    wget https://corretto.aws/downloads/latest/amazon-corretto-19-x64-linux-jdk.deb && \
+    apt-get install -y ./amazon-corretto-19-x64-linux-jdk.deb
 
 WORKDIR /app
 
