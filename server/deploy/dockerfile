@@ -1,22 +1,46 @@
-FROM amazoncorretto:19 as build
+FROM ubuntu:latest as build
 
+# Install Java
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:linuxuprising/java && \
+    apt-get update && \
+    apt-get install -y java-19-amazon-corretto-jdk
+
+# Set up working directory
 WORKDIR /app
 
+# Copy Maven wrapper and pom.xml
 COPY mvnw .
 COPY mvnw.cmd .
 COPY pom.xml .
 COPY .mvn .mvn
 
+# Install Maven dependencies
 RUN ./mvnw wrapper:wrapper
 RUN ./mvnw dependency:go-offline
 
+# Copy source code and build the application
 COPY src src
 RUN ./mvnw clean package -DskipTests
 
-FROM amazoncorretto:19
+# Stage 2: Create the runtime image
+FROM ubuntu:latest
+
+# Install Java
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:linuxuprising/java && \
+    apt-get update && \
+    apt-get install -y java-19-amazon-corretto-jdk
 
 WORKDIR /app
 
+# Copy the built JAR file
 COPY --from=build /app/target/tyche_server.jar app.jar
+
+# Expose port 8080
 EXPOSE 8080
+
+# Command to run the application
 CMD ["java", "-jar", "app.jar"]
