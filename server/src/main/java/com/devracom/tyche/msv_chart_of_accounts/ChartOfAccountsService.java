@@ -3,9 +3,13 @@ package com.devracom.tyche.msv_chart_of_accounts;
 import com.devracom.tyche.exceptions.EntityNotFoundException;
 import com.devracom.tyche.msv_chart_of_accounts.dto.CreateAccount;
 import com.devracom.tyche.msv_chart_of_accounts.dto.RestrictedAccount;
+import com.devracom.tyche.msv_users.User;
+import com.devracom.tyche.msv_users.UsersService;
+import com.devracom.tyche.msv_users.dto.RestrictedUser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.lang.Nullable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,6 +60,8 @@ public class ChartOfAccountsService {
     }
 
     public List<Account> importExample() {
+        String userId = ((RestrictedUser)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getId();
+
         if(chartOfAccountsRepository.findAllByPackage("Example1").isEmpty()) {
             try {
                 String directoryPath = "src/main/resources/static/msv_chart_of_accounts";
@@ -74,7 +80,10 @@ public class ChartOfAccountsService {
                     String jsonContent = new String(jsonData, StandardCharsets.UTF_8);
                     ObjectMapper objectMapper = new ObjectMapper();
                     List<Account> entities = objectMapper.readValue(jsonContent, new TypeReference<>() {});
-                    entities = entities.stream().peek(account -> account.setAccountsPackage("Example1")).collect(Collectors.toList());
+                    entities = entities.stream().peek(account -> {
+                                        account.setAccountsPackage("Example1");
+                                        account.setUserId(userId);
+                                    }).collect(Collectors.toList());
 
                     chartOfAccountsRepository.saveAll(entities);
                     inputStream.close();
@@ -88,6 +97,8 @@ public class ChartOfAccountsService {
     }
 
     public Account create(CreateAccount account) {
+        String userId = ((RestrictedUser)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getId();
+
         Account newAccount = Account.builder()
                 .type(account.getType())
                 .subType(account.getSubType())
@@ -97,6 +108,7 @@ public class ChartOfAccountsService {
                 .code(account.getCode())
                 .sign(account.getSign())
                 .accountsPackage(account.getAccountsPackage())
+                .userId(userId)
                 .build();
 
         return chartOfAccountsRepository.save(newAccount);

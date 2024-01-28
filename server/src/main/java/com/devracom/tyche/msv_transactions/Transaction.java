@@ -2,6 +2,7 @@ package com.devracom.tyche.msv_transactions;
 
 
 import com.devracom.tyche.msv_chart_of_accounts.Account;
+import com.devracom.tyche.msv_users.dto.RestrictedUser;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class Transaction {
     @DBRef
     private Account account;
 
+    private String userId;
     private long value;
     private String notes;
     private Date executionDate;
