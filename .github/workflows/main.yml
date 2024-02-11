@@ -25,6 +25,7 @@ jobs:
           cd /var/www/tyche
           rm -r Tyche
           git clone git@github.com:Ramphy0x90/Tyche.git
+          pwd
           ./init
           docker image prune -f
           docker stop tychesvr
