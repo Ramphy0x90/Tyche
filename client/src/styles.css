@@ -112,3 +112,17 @@ ng-select {
 .main-container .dropdown-menu li:hover {
     background-color: var(--color-main-white-1);
 }
+
+.main-container .no-transactions,
+.main-container .no-accounts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: var(--color-main-black-1);
+}
+
+.no-transactions img {
+    width: 300px;
+}

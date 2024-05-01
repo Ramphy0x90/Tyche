@@ -9,7 +9,7 @@
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        {{selectedPackage}}
+                        {{selectedPackage || "Seleziona pacchetto"}}
                     </button>
         
                     <ul class="dropdown-menu">
@@ -103,6 +103,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        }
+
+        @if(!accountsByType.length) {
+            <div class="no-transactions mt-3">
+                <p>Non ci sono piano dei conti</p>
             </div>
         }
     </div>

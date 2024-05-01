@@ -122,6 +122,12 @@
                 }
             </tbody>
         </table>
+
+        @if(!transactions.length) {
+            <div class="no-transactions">
+                <p>Non ci sono transazioni</p>
+            </div>
+        }
     </div>
 
     <!-- Modal -->
