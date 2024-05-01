@@ -111,7 +111,7 @@ public class ChartOfAccountsController {
             @ApiResponse(responseCode = "404", description = "Account not found", content = @Content),
     })
     @DeleteMapping(path = "/delete/{id}")
-    public void deleteUser(@PathVariable("id") String id) {
+    public void deleteAccount(@PathVariable("id") String id) {
         chartOfAccountsService.delete(id);
     }
 }

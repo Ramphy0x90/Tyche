@@ -72,7 +72,7 @@ export class ChartOfAccountsComponent implements OnInit {
         this.selectedPackage && this.chartOfAccountsService.getAll(this.selectedPackage)
             .pipe(take(1))
             .subscribe((accounts) => {
-                this.accounts = accounts;
+                this.accounts = [...accounts];
                 this.groupAccountsBy("type");
             })
     }
@@ -91,7 +91,10 @@ export class ChartOfAccountsComponent implements OnInit {
             .pipe(take(1))
             .subscribe((packages) => {
                 this.accountsPackages = packages;
-                this.selectedPackage = this.accountsPackages?.[0] || "";
+
+                if (!this.selectedPackage || (this.selectedPackage && !this.accountsPackages.includes(this.selectedPackage))) {
+                    this.selectedPackage = this.accountsPackages?.[0] || "";
+                }
             })
     }
 
@@ -150,6 +153,7 @@ export class ChartOfAccountsComponent implements OnInit {
             this.chartOfAccountsService.create(this.formModel)
                 .pipe(take(1))
                 .subscribe(() => {
+                    this.loadAccountsPackages();
                     this.loadAccounts();
                 });
         }
@@ -180,6 +184,7 @@ export class ChartOfAccountsComponent implements OnInit {
             toArray()
         ).subscribe(() => {
             this.selectedAccounts = [];
+            this.loadAccountsPackages();
             this.loadAccounts();
         });
     }
