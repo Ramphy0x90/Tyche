@@ -3,25 +3,23 @@ package com.devracom.tyche.msv_chart_of_accounts;
 import com.devracom.tyche.exceptions.EntityNotFoundException;
 import com.devracom.tyche.msv_chart_of_accounts.dto.CreateAccount;
 import com.devracom.tyche.msv_chart_of_accounts.dto.RestrictedAccount;
-import com.devracom.tyche.msv_users.User;
-import com.devracom.tyche.msv_users.UsersService;
 import com.devracom.tyche.msv_users.dto.RestrictedUser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.lang.Nullable;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @Transactional
@@ -64,14 +62,23 @@ public class ChartOfAccountsService {
 
         if(chartOfAccountsRepository.findAllByPackage("Example1").isEmpty()) {
             try {
-                String directoryPath = "src/main/resources/static/msv_chart_of_accounts";
-
-                // List all JSON files in the directory
-                List<File> jsonFiles = Files.walk(Paths.get(directoryPath))
-                        .filter(Files::isRegularFile)
-                        .filter(p -> p.toString().endsWith(".json"))
-                        .map(Path::toFile)
-                        .toList();
+                PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+                Resource[] resources = resolver.getResources("classpath:static/msv_chart_of_accounts/*.json");
+                File tempDir = Files.createTempDirectory("jsonResources").toFile();
+                
+                List<File> jsonFiles = Stream.of(resources).map(resource -> {
+                    File tempFile = new File(tempDir, Objects.requireNonNull(resource.getFilename()));
+                    try (InputStream is = resource.getInputStream(); FileOutputStream os = new FileOutputStream(tempFile)) {
+                        byte[] buffer = new byte[1024];
+                        int bytesRead;
+                        while ((bytesRead = is.read(buffer)) != -1) {
+                            os.write(buffer, 0, bytesRead);
+                        }
+                        return tempFile;
+                    } catch (IOException e) {
+                        throw new RuntimeException("Failed to read and write resource file", e);
+                    }
+                }).toList();
 
                 for (File file : jsonFiles) {
                     FileInputStream inputStream = new FileInputStream(file);
